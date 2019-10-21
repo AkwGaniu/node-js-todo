@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/assets/css/reg.css" type="text/css">
+    <title>Todo | verify-token</title>
+</head>
+<body>
+    <main>
+        <h2 class = "jwt">Paste your token in the field below</h2>
+        <form class = "jwt" action="#" onsubmit="event.preventDefault()" autocomplete="off">
+
+            <div class="form-group">
+                <input type="text" placeholder="###########################################" id="token">
+                <span class="error" id="emailError"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="button" value = "Submit" onclick="verifyToken()">
+            </div>
+        </form>
+
+        <h2 class= "hide">Enter a new password for your account</h2>
+        <form class="hide" action="#" onsubmit="event.preventDefault()" autocomplete="off">
+
+            <div class="form-group">
+                <input type="password" placeholder="Password*" id="pass" onblur="validPassword()">
+                <span class="error" id="passError"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="password" placeholder="Confirm password*" id="passConfirm" onblur="validPasswordConfirm()">
+                <span class="error" id="passConfirmError"></span>
+            </div>
+            
+            <div class="form-group"> 
+                <input type="button" value = "Submit" onclick="changePassword()">
+            </div>
+        </form>
+    </main>
+
+    <script src="/assets/js/form.js"></script>
+</body>
+</html>

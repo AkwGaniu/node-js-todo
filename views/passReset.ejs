@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/assets/css/reg.css" type="text/css">
+    <title>Todo | reset-password</title>
+</head>
+<body>
+    <main>
+        <h2>Enter Your Email Address to reset to password</h2>
+        <form action="#" onsubmit="event.preventDefault()" autocomplete="off">
+
+            <div class="form-group">
+                <input type="email" placeholder="Email address*" id="email" onkeyup="validLoginEmail()">
+                <span class="error" id="emailError"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="button" value = "Submit" onclick="resetPassword()">
+            </div>
+        </form>
+    </main>
+
+    <script src="/assets/js/form.js"></script>
+</body>
+</html>

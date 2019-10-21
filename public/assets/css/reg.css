@@ -1,0 +1,99 @@
+*{
+    box-sizing: border-box
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: 
+        linear-gradient(to bottom, 
+        rgba(255, 246, 246, 0.7),
+        rgba(112, 111, 111, 0.7)),
+        url("images/image1.jpeg");
+
+    background-size: cover;
+}
+
+main{
+    margin: 4% auto;
+    width: 40%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+
+main h2 {
+    margin-bottom:10px;
+    font-size: 2em;
+    color: whitesmoke;
+    text-shadow: 1px 1px 2px black;
+    text-align: center;
+}     
+
+main h3 {
+    margin-top: 0;
+    margin-bottom:5px;
+    color: whitesmoke;
+    text-shadow: 1px 1px 2px black;
+    text-align: center;
+}
+
+.form-group{
+    width: 100%;
+    padding: 10Px;
+    border-radius: 10px;
+}
+
+.error {
+    color: rgb(236, 67, 67);
+    font-size: 1.2em;
+    padding: 3px;
+    
+}
+
+.form-group input{
+    width: 100%;
+    height: 35px;
+    border-radius: 10px;
+    font-size: 1em;
+    padding: 5px;
+}
+
+.form-group input[type="button"]{
+    width: 50%;
+    margin: 0 25%;
+    font-size: 1.6em;
+    height: auto;
+    font-weight: 700;
+    color: whitesmoke;
+    text-shadow: 1px 1px 2px black;
+
+
+     
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+    main{
+        width: 80%;
+        margin: 20% auto;
+    }
+
+    
+}
