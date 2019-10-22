@@ -3,6 +3,7 @@ const dotenv = require('dotenv')
 var todoController = require("./controllers/todoController")
 var userRegController = require("./controllers/userRegController")
 const mongoose = require('mongoose')
+
 var app = express();
 
 //Setting the view engine
@@ -23,13 +24,18 @@ mongoose.connection.once("open", function() {
 
 //fire the controller functions
 todoController(app)
-userRegController(app)
+userRegController(app) 
 
 //CONFIGURE DOTENV
 dotenv.config()
 
 //Listen to a port 
-app.listen(3000, (err) => {
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, (err) => {
     if(err) throw err
-    console.log("Wa are listening to port 3000")
+    console.log(`Wa are listening to port ${PORT}`)
 })
+
+
+
