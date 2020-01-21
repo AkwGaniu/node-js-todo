@@ -249,7 +249,7 @@ const resetPassword = () => {
             if(resp.ok) {
                 return resp.json()
             } else {
-                return Promise.reject("Oops... An error occured. Please try again")
+                return Promise.reject("Oops... An error occured. Please check your network and try again")
             }
         })
         .then(data => {
@@ -269,7 +269,7 @@ const resetPassword = () => {
             }
         })
         .catch(error => {
-            console.log(error)
+            alert(error)
         })
         nameErr = emailErr = passErr  = passConfirmErr = true;
     } else {

@@ -65,21 +65,25 @@ module.exports = function(app) {
         User.find({email: req.body.email}, {name: false, password: false}, (err, data) => {
             if(err) throw err
             if(data.length === 0) {
-                res.json("emailNotExist")
+                res.status(200).json("emailNotExist")
             } else {
                 //JWT TOKEN GENERATION
                 const token = jwt.sign({userId: data[0]._id}, process.env.JSON_SECRET, {expiresIn: "32 minutes"})
                 // Email configuration
                 const emailConfig = {
-                    from: "lmd4sure@gmail.com",
+                    from: process.env.SENDER_EMAIL,
                     to: data[0].email,
                     subject: "Password Reset Link",
                     html: `
-                        <p> Follow the link below to reset your password.
+                        <p style="background-color: grey; color: white; font-size: 18px">
+                        Follow the link below to reset your password.\n
                         Copy the token below and use it to reset your password.
                         The token expires after 30 minutes counting from the moment you recieved this mail</p>
-                        <p>${token}</p>
-                        <a href="http://localhost:3000/verify-user" target="_blank" rel="noopener noreferrer">Reset Password</a>
+                        <p style="background-color: grey; color: blue; font-size: 16px">
+                        ${token}\n 
+                        Folow this link to <a href="http://localhost:3000/verify-user" target="_blank" rel="noopener noreferrer">Reset Password</a>
+                        </p>
+                        
                     `
                 }
 
@@ -97,13 +101,10 @@ module.exports = function(app) {
 
     app.post("/register", async function(req, res) {
         
-        console.log(req.body)
-
+        //HASH USER PASSWORD
         const salt = await bcrypt.genSalt(10)
-        console.log(salt)
         const hashedPass = await bcrypt.hash(req.body.password, salt)
 
-        console.log(hashedPass)
         //Get user details from the form and update the database
         User.find({email: req.body.email}, {name: false, password: false}, (err, data)  => {
             if(err) throw err
@@ -116,10 +117,10 @@ module.exports = function(app) {
 
                 User(record).save((err, data) => {
                 if(err) throw err
-                res.json("Success")
+                res.status(200).json("Success")
                 })
             } else {
-                res.json("Email already exist, Please proceed to login")
+                res.status(200).json("Email already exist, Please proceed to login")
             }
         })
         
@@ -140,9 +141,10 @@ module.exports = function(app) {
     app.post("/update-pass", async function(req, res) {
         let newPass = {password: req.body.password}
         let query = {_id: req.body.userId}
-       let update = await User.updateOne(query, newPass, (err) => {
+        
+        await User.updateOne(query, newPass, (err) => {
             if (err) throw err
-            res.json("1 record updated")
+            res.status(200).json("1 record updated")
         })
  
     })
